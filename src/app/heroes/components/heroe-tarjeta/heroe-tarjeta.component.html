@@ -1,0 +1,32 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{heroe.superhero}}</mat-card-title>
+        <mat-card-subtitle>{{heroe.alter_ego}}</mat-card-subtitle>
+    </mat-card-header>
+    <!--Aca abajo vamos a implementar el pipe imagen:-->
+    <img mat-card-image [src]="heroe|imagen">
+    <!--Porque el profe lo diagramó así las imagenes tiene igual nombre
+        que el id que traen desde la base de datos, eso permite que 
+        vayamos trayendo las imagenes-->
+    <mat-card-content>
+        <h3>{{heroe.publisher}}</h3>
+        <p>
+            <strong>Primera aparicion: </strong> {{heroe.first_appearance}}
+            <br>
+            <strong>Personajes: </strong> {{heroe.characters}}            
+        </p>
+    </mat-card-content>
+    <mat-card-actions><!--Este es una etiqueta que contiene botones con acciones específicas-->
+        <button mat-button 
+                color="warn"
+                [routerLink]="['/heroes', heroe.id]">
+            Leer mas...
+        </button>
+        <button mat-button 
+                color="info"
+                [routerLink]="['/heroes/editar', heroe.id]">
+            Editar
+        </button>
+    </mat-card-actions>
+</mat-card>

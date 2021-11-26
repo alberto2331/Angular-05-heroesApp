@@ -1,0 +1,37 @@
+<mat-grid-list cols="1" *ngIf="!heroe; else divHeroe">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #divHeroe> 
+
+    <div fxLayout="row"
+         fxLayout.xs="column" 
+         fxLayoutGap="30px">
+<!--fxLayout.xs="column" = Esto significa que cuando la pantalla sea muy pequeña se mostrará en forma de columna-->
+<!--fxLayoutGap="30px" = Significa que entre cada columna de 30 pixeles-->
+        <div fxFlex="50">
+<!--fxFlex="50" = sirve para indicarle que ese div ocupará el 50% de la pantalla-->
+            <h2>{{heroe.superhero}}<small>- {{heroe.alter_ego}}</small></h2>
+            <mat-divider><!--esto introduce una linea como el hr--></mat-divider>
+            <br>
+            <img [src]="heroe|imagen"> <!--Recordemos que "imagen" es el nombre de un pipe personalizado que nosotros creamos-->
+        </div>
+        <div fxFlex="50">
+<!--fxFlex="50" = sirve para indicarle que ese div ocupará el 50% de la pantalla-->            
+            <h1>{{heroe.publisher}}</h1>
+            <mat-divider><!--esto introduce una linea como el hr--></mat-divider>
+            <mat-list>
+                <mat-list-item> {{heroe.first_appearance}}</mat-list-item>
+                <mat-list-item> {{heroe.characters}}</mat-list-item>                
+            </mat-list>
+            <br>
+            <button 
+                    mat-button color="warn"
+                    (click)="regresar()">
+                Regresar
+            </button>
+        </div>
+    </div>
+</ng-template>
